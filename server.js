@@ -18,12 +18,14 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch(error => console.log(error));
 
-app.get("/", (req, res) => res.send("Hello"));
+app.use(passport.initialize());
+
+require("./config/passport")(passport);
 
 // Use Routes
 app.use("/api/users", users);
-app.use("/api/profile", users);
-app.use("/api/posts", users);
+//app.use("/api/profile", profile);
+//app.use("/api/posts", posts);
 
 const port = process.env.PORT || 5000;
 
