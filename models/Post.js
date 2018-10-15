@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/* const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
@@ -14,12 +14,9 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
-  handle: {
-    type: String
-  },
   upvotes: [
     {
-      user: {
+      username: {
         type: Schema.Types.ObjectId,
         ref: "users"
       }
@@ -27,7 +24,7 @@ const PostSchema = new Schema({
   ],
   downvotes: [
     {
-      user: {
+      username: {
         type: Schema.Types.ObjectId,
         ref: "users"
       }
@@ -51,7 +48,7 @@ const PostSchema = new Schema({
           },
           upvotes: [
             {
-              user: {
+              username: {
                 type: Schema.Types.ObjectId,
                 ref: "users"
               }
@@ -59,7 +56,7 @@ const PostSchema = new Schema({
           ],
           downvotes: [
             {
-              user: {
+              username: {
                 type: Schema.Types.ObjectId,
                 ref: "users"
               }
@@ -96,4 +93,4 @@ const PostSchema = new Schema({
   }
 });
 
-module.exports = Post = mongoose.model("post", PostSchema);
+module.exports = Post = mongoose.model("post", PostSchema); */

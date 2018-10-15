@@ -9,6 +9,9 @@ const posts = require("./routes/api/posts");
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // DB config
 const db = require("./config/keys").mongoURI;
 
@@ -24,8 +27,8 @@ require("./config/passport")(passport);
 
 // Use Routes
 app.use("/api/users", users);
-//app.use("/api/profile", profile);
-//app.use("/api/posts", posts);
+app.use("/api/profile", profile);
+app.use("/api/posts", posts);
 
 const port = process.env.PORT || 5000;
 
