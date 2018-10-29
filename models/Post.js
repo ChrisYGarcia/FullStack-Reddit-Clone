@@ -1,8 +1,9 @@
-/* const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Comment = require("./Comment");
 
 const PostSchema = new Schema({
-  username: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: "users"
   },
@@ -14,9 +15,12 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
+  username: {
+    type: String
+  },
   upvotes: [
     {
-      username: {
+      user: {
         type: Schema.Types.ObjectId,
         ref: "users"
       }
@@ -24,53 +28,14 @@ const PostSchema = new Schema({
   ],
   downvotes: [
     {
-      username: {
+      user: {
         type: Schema.Types.ObjectId,
         ref: "users"
       }
     }
   ],
-  comments: [
-    {
-      username: {
-        type: Schema.Types.ObjectId,
-        ref: "users"
-      },
-      replies: [
-        {
-          username: {
-            type: Schema.Types.ObjectId,
-            ref: "users"
-          },
-          text: {
-            type: String,
-            required: true
-          },
-          upvotes: [
-            {
-              username: {
-                type: Schema.Types.ObjectId,
-                ref: "users"
-              }
-            }
-          ],
-          downvotes: [
-            {
-              username: {
-                type: Schema.Types.ObjectId,
-                ref: "users"
-              }
-            }
-          ],
-          reply: [replies]
-        }
-      ],
-      text: {
-        type: String,
-        required: true
-      }
-    }
-  ],
+  comments: [[Comment.Schema]],
+  ref: "comment",
   upvotes: [
     {
       user: {
@@ -93,4 +58,6 @@ const PostSchema = new Schema({
   }
 });
 
-module.exports = Post = mongoose.model("post", PostSchema); */
+//CommentSchema.add({ replies: [CommentSchema] });
+
+module.exports = Post = mongoose.model("post", PostSchema);
